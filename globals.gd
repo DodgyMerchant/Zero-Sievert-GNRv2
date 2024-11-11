@@ -6,7 +6,7 @@ signal LoadRequest(loadType: LOAD_TYPE, path: String)
 
 @warning_ignore("unused_signal")
 ## signals that the game data was updated.
-signal GameData_Updated()
+signal GameData_Updated(gameData: Dictionary)
 
 ## types of loadable files
 enum LOAD_TYPE {

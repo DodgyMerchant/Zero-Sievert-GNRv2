@@ -3,10 +3,13 @@ extends Control
 const EXEName = "ZERO Sievert.exe"
 
 var Loader = preload("res://Loader.gd").new()
-var GameData: Dictionary = {}:
+var _gameData: Dictionary = {}
+var GameData: Dictionary:
+	get:
+		return _gameData
 	set(data):
-		GameData = data
-		Globals.GameData_Updated.emit(GameData)
+		_gameData = data
+		Globals.GameData_Updated.emit(_gameData)
 
 @onready var load_screen: VBoxContainer = %Load_Screen
 @onready var data_screen: Control = %Data_Screen
@@ -52,8 +55,7 @@ func _show(target: CanvasItem):
 #region saving loading
 
 func _on_loadRequest(loadType: Globals.LOAD_TYPE, path: String):
-	
-	prints('Path:"%s"' % path)
+
 	var loadedData: Dictionary
 
 	match loadType:
@@ -65,9 +67,9 @@ func _on_loadRequest(loadType: Globals.LOAD_TYPE, path: String):
 			path = path.path_join(Globals.GAMEDAT_Path)
 
 			# load data to json to dict
-			loadedData = gamedata_to_dict(JSON.parse_string(Loader._load_from_file(path)))
+			GameData = gamedata_to_dict(JSON.parse_string(Loader._load_from_file(path)))
 
-			prints(loadedData, loadedData)
+			prints("GameData", GameData)
 		Globals.LOAD_TYPE.GNR_Text:
 			pass
 
@@ -85,5 +87,5 @@ func gamedata_to_dict(rawData: Variant) -> Dictionary:
 	
 	return data
 
-func _on_gameData_updated():
+func _on_gameData_updated(gameData):
 	determine_screen()
