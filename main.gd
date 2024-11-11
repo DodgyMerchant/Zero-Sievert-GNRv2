@@ -9,7 +9,7 @@ var GameData: Dictionary = {}:
 		Globals.GameData_Updated.emit(GameData)
 
 @onready var load_screen: VBoxContainer = %Load_Screen
-@onready var data: Control = %Data_Screen
+@onready var data_screen: Control = %Data_Screen
 
 func _ready() -> void:
 	setup()
@@ -31,12 +31,12 @@ func manage_startup():
 func determine_screen():
 	if (GameData.is_empty()):
 		# no path
-		_hide(data)
+		_hide(data_screen)
 		_show(load_screen)
 	else:
 		# loading user data path
 		_hide(load_screen)
-		_show(data)
+		_show(data_screen)
 
 #endregion
 #region Show/Hide
