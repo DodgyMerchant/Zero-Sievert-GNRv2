@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpjlr3fmqar4g"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_qjuv2"]
+[ext_resource type="Script" path="res://load_screen.gd" id="2_83ro4"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qjuv2")
+
+[node name="Load_Screen" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 273.0
+offset_top = 172.0
+offset_right = -272.0
+offset_bottom = -172.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("2_83ro4")
+
+[node name="Label" type="Label" parent="Load_Screen"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "No game data Loaded
+Add path to game and hit load button"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Path_Field" type="TextEdit" parent="Load_Screen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "File path to Zero SIevert."
+
+[node name="Button" type="Button" parent="Load_Screen"]
+layout_mode = 2
+text = "Load"
+
+[node name="Data" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Load_Screen/Button" to="Load_Screen" method="_on_load_button_pressed"]

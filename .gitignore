@@ -16,6 +16,9 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
+# -----CUSTOM-----
+addons/toggle_external_editor
+
 # ---------VSCODE---------
 .vscode/*
 !.vscode/settings.json
