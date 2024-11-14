@@ -15,7 +15,7 @@ config/description="Zero Sievert GNR (Gun Name Replacer)
 
 A program that makes replacing the weapon names in the game Zero Sievert less tedious and risky."
 config/version="1.0.0"
-run/main_scene="res://main.tscn"
+run/main_scene="res://general/main.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.270588, 0.156863, 0.235294, 1)
@@ -26,13 +26,13 @@ config/icon="res://Icons/icon_256.png"
 
 [autoload]
 
-Globals="*res://globals.gd"
+Globals="*res://general/globals.gd"
 
 [display]
 
+window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -44,7 +44,7 @@ enabled=PackedStringArray("res://addons/toggle_external_editor/plugin.cfg")
 
 [gui]
 
-theme/custom="res://default_theme.tres"
+theme/custom="res://theme/default_theme.tres"
 
 [rendering]
 

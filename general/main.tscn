@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxjxr1gebb6ef"]
+
+[ext_resource type="Script" path="res://general/main.gd" id="1_qjuv2"]
+[ext_resource type="PackedScene" uid="uid://bmnxcveylif0v" path="res://load screen/load_screen.tscn" id="2_xm7dp"]
+[ext_resource type="PackedScene" uid="uid://bcye2o1i05lk5" path="res://data screen/data_screen.tscn" id="3_p0w31"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qjuv2")
+
+[node name="Load_Screen" parent="." instance=ExtResource("2_xm7dp")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.239149
+anchor_top = 0.3125
+anchor_right = 0.760851
+anchor_bottom = 0.6875
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Data_Screen" parent="." instance=ExtResource("3_p0w31")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

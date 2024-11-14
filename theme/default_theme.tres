@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cw3l7sn6bst3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fttch"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[resource]
+HBoxContainer/constants/separation = 10
+MenuVBoxContainer/base_type = &"VBoxContainer"
+MenuVBoxContainer/constants/separation = 20
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_fttch")
+VBoxContainer/constants/separation = 4

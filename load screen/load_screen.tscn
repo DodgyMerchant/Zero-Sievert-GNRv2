@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmnxcveylif0v"]
+
+[ext_resource type="Script" path="res://load screen/load_screen.gd" id="1_8brnh"]
+[ext_resource type="Script" path="res://load screen/load_button.gd" id="2_cp2jw"]
+
+[node name="Load_Screen" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.521701
+anchor_bottom = 0.375
+size_flags_horizontal = 4
+theme_type_variation = &"MenuMarginContainer"
+script = ExtResource("1_8brnh")
+metadata/_edit_use_anchors_ = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 2
+size = Vector2i(406, 244)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("ZERO Sievert.exe;Zero Sievert Exe")
+use_native_dialog = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"MenuVBoxContainer"
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+text = "No game data Loaded
+Add path to game and hit load button"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Path_Field" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "File path to Zero Sievert exe."
+
+[node name="Select_Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Select File"
+
+[node name="Load_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Load"
+script = ExtResource("2_cp2jw")
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/Path_Field" to="VBoxContainer/Load_Button" method="_on_path_field_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Select_Button" to="." method="_on_select_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Load_Button" to="." method="_on_load_button_pressed"]

@@ -1,6 +1,6 @@
-extends VBoxContainer
+extends PanelContainer
 
-@onready var path_field: TextEdit = %Path_Field
+@onready var path_field: LineEdit = %Path_Field
 @onready var file_dialog: FileDialog = %FileDialog
 
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +13,7 @@ func _on_load_button_pressed() -> void:
 		return
 	
 	# load game data from path
-	Globals.LoadRequest.emit(Globals.LOAD_TYPE.GameDat_Json, path_field.text)
+	Globals.Loader.load_gameData(path_field.text)
 
 
 #region file dialog
