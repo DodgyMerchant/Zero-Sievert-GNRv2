@@ -60,3 +60,5 @@ func _on_gameData_updated(gameData: Gun_Name_Data):
 	
 	if masterUpdate:
 		masterKeyList = newMaster
+	
+	

@@ -1,25 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfbbxhovw8a66"]
+[gd_scene load_steps=4 format=3 uid="uid://bfbbxhovw8a66"]
 
 [ext_resource type="Script" path="res://data screen/data_list.gd" id="1_4ba3q"]
+[ext_resource type="PackedScene" uid="uid://dfwuv2rcgmplu" path="res://data screen/DataField.tscn" id="2_5dwku"]
+[ext_resource type="Script" path="res://data screen/scroll_container.gd" id="2_i1r4h"]
 
 [node name="DataList" type="TabContainer"]
-offset_right = 395.0
-offset_bottom = 337.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 62.0
+grow_vertical = 2
 current_tab = 0
 clip_tabs = false
-drag_to_rearrange_enabled = true
+all_tabs_in_front = true
 tabs_rearrange_group = 0
 use_hidden_tabs_for_min_size = true
 script = ExtResource("1_4ba3q")
+DATA_FIELD = ExtResource("2_5dwku")
 
 [node name="Title" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-clip_contents = true
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="DataList" type="VBoxContainer" parent="Title"]
+[node name="SyncedScrollContainer" type="ScrollContainer" parent="Title"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+script = ExtResource("2_i1r4h")
+
+[node name="DataList" type="VBoxContainer" parent="Title/SyncedScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0

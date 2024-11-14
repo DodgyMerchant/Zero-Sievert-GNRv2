@@ -10,20 +10,20 @@ var gameData: Gun_Name_Data
 		if panel != null && newName != "":
 			panel.name = newName
 
-const DATA_FIELD = preload("res://data screen/DataField.tscn")
+@export var DATA_FIELD: PackedScene
+
 @onready var panel: PanelContainer = %Title
 @onready var field_List: VBoxContainer = %DataList
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	title = title
-	
+
 	if Engine.is_editor_hint():
 		pass
 	else:
 		Globals.DV_MasterList_Updated.connect(_on_masterList_updated)
 	
-
 #region child managemant
 
 func _create_field_from_data(gData: Gun_Name_Data, key: String):
@@ -32,8 +32,7 @@ func _create_field_from_data(gData: Gun_Name_Data, key: String):
 func _create_field(key: String, text: String) -> Data_Field:
 	var obj = DATA_FIELD.instantiate()
 	field_List.add_child(obj)
-	obj.set_text(text)
-	obj.data_key = key
+	obj.setup(key, text)
 	return obj
 
 func _remove_field(field: LineEdit):

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6vjtkstuwj5e"]
+
+[ext_resource type="PackedScene" uid="uid://dfwuv2rcgmplu" path="res://data screen/DataField.tscn" id="1_66wdy"]
+[ext_resource type="Script" path="res://data screen/key_field.gd" id="2_v1ayf"]
+
+[node name="HBoxContainer" instance=ExtResource("1_66wdy")]
+script = ExtResource("2_v1ayf")
+
+[node name="LineEdit" parent="." index="0"]
+editable = false
+flat = true

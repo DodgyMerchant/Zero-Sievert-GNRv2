@@ -8,6 +8,8 @@ content_margin_bottom = 10.0
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [resource]
+CloseHBox/base_type = &"HBoxContainer"
+CloseHBox/constants/separation = 0
 HBoxContainer/constants/separation = 10
 MenuVBoxContainer/base_type = &"VBoxContainer"
 MenuVBoxContainer/constants/separation = 20

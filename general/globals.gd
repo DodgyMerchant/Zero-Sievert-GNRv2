@@ -14,6 +14,10 @@ signal GameData_Updated(gameData: Gun_Name_Data)
 ## signals that the master list in the data view was updated.
 signal DV_MasterList_Updated(masterList: Array[String])
 
+@warning_ignore("unused_signal")
+signal DV_listScroll_Updated(origin: Control, value: int)
+
+
 #endregion
 
 var Loader = preload("res://general/Loader.gd").new()
