@@ -35,7 +35,7 @@ func _create_field(key: String, text: String) -> Data_Field:
 	obj.setup(key, text)
 	return obj
 
-func _remove_field(field: LineEdit):
+func _remove_field(field: Data_Field):
 	field_List.remove_child(field)
 	field.queue_free()
 
@@ -43,11 +43,11 @@ func _remove_all_fields():
 	for field in field_List.get_children():
 		_remove_field(field)
 
-func _get_field(index: int) -> LineEdit:
-	return get_child(index)
+func _get_field(index: int) -> Data_Field:
+	return field_List.get_child(index)
 
-func _recycle_field(obj: LineEdit):
-	obj.clear()
+func _recycle_field(obj: Data_Field):
+	obj.line_edit.clear()
 
 ## find the index of the field with the corresponding key and 
 func _get_index_by_key(key: String, list: Array[Node] = field_List.get_children()):
@@ -105,6 +105,15 @@ func _set_data(gData: Gun_Name_Data, masterKeyList: Array[String]):
 	# TODO: set fields and create missing fields
 	# set existing fields and create missing.
 	# because the master list update might have happened wich can have entriesa missing in given weapon data
+
+	var index: int
+	for key: String in gData.dict.keys():
+		index = _get_index_by_key(key)
+		if index == -1:
+			push_warning("Data_List _set_data missing field for key")
+			continue
+		
+		_get_field(index).setup(key, gData.dict[key])
 
 func _on_masterList_updated(masterList):
 	_update_list(masterList);
