@@ -13,8 +13,9 @@ func _on_load_button_pressed() -> void:
 		return
 	
 	# load game data from path
-	Globals.Loader.load_gameData(path_field.text)
-
+	var data = Globals.Loader.load_gameData(path_field.text)
+	if data != null:
+		Globals.GameData_Updated.emit(data)
 
 #region file dialog
 

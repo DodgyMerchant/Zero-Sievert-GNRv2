@@ -39,7 +39,7 @@ func _remove_field(field: LineEdit):
 	field_List.remove_child(field)
 	field.queue_free()
 
-func _clear_all_fields():
+func _remove_all_fields():
 	for field in field_List.get_children():
 		_remove_field(field)
 
@@ -79,7 +79,6 @@ func _sort_fields(masterList: Array[String]):
 		for child in children:
 			child.queue_free()
 
-
 #endregion
 	
 ## populates list with entries
@@ -89,16 +88,23 @@ func _populate_list(gData: Gun_Name_Data, masterKeyList: Array[String]):
 		
 ## updating list entries
 func _update_list(masterKeyList: Array[String]):
-	if field_List.get_child_count() != masterKeyList.size():
-		_sort_fields(masterKeyList)
-		pass
+	# same size chack doesnt accoutn for same size diff keys.
+	# if field_List.get_child_count() != masterKeyList.size():
+	# 	_sort_fields(masterKeyList)
+	
+	_sort_fields(masterKeyList)
 
 ## updating data
-func _update_data(gData: Gun_Name_Data, masterKeyList: Array[String]):
+func _set_data(gData: Gun_Name_Data, masterKeyList: Array[String]):
+	gameData = gData
+
 	if field_List.get_child_count() == 0:
 		_populate_list(gData, masterKeyList)
 		return
-	pass
+	
+	# TODO: set fields and create missing fields
+	# set existing fields and create missing.
+	# because the master list update might have happened wich can have entriesa missing in given weapon data
 
 func _on_masterList_updated(masterList):
 	_update_list(masterList);

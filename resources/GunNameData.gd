@@ -1,7 +1,10 @@
 extends Resource
 class_name Gun_Name_Data
 
+
 @export var name: String
+
+# dictionary holding gun keys and gun names
 @export var dict: Dictionary
 
 

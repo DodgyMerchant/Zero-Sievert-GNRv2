@@ -9,7 +9,3 @@ func _create_field(key: String, text: String) -> Data_Field:
 	var obj: Data_Field = super(key, text)
 	obj.line_edit.editable = false
 	return obj
-
-func _on_masterList_updated(masterList):
-	super(masterList)
-	pass

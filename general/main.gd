@@ -17,7 +17,8 @@ func manage_startup():
 	# load user data
 
 	# show relevant screen
-	determine_screen(Globals.Loader.GameData)
+	# TODO: make game data load automatic
+	determine_screen(null)
 
 ## determines to show the data load or data screen.
 func determine_screen(gameData):

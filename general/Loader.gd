@@ -5,23 +5,23 @@ const UserDataName = "user.data"
 const EXEName = "ZERO Sievert.exe"
 const GAMEDAT_Path = "ZS_vanilla/gamedata/weapon.json"
 
-var GameData: Gun_Name_Data:
-	get:
-		return GameData
-	set(data):
-		GameData = data
-		Globals.GameData_Updated.emit(GameData)
-
 #region gamedata
 
 func load_gameData(path: String) -> Gun_Name_Data:
 	path = path.erase(path.find(EXEName), EXEName.length())
 	#add paths
 	path = path.path_join(Globals.Loader.GAMEDAT_Path)
-	# load data to json to dict
-	GameData = Gun_Name_Data.new("GameData", gamedata_to_dict(JSON.parse_string(Globals.Loader._load_from_file(path))))
 
-	return GameData
+	# load data to json to dict
+	# and emit it
+
+	var data = Globals.Loader._load_from_file(path)
+	if data != "":
+		data = JSON.parse_string(data)
+		if data != null:
+			return Gun_Name_Data.new("GameData", gamedata_to_dict(data))
+	return null
+
 
 #endregion
 #region user data

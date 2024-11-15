@@ -1,8 +1,11 @@
 extends MarginContainer
 
 @onready var Lists: HBoxContainer = %Lists
+@onready var GameDataList: Data_List = %GameData
 
 const DATA_LIST = preload("res://data screen/DataList.tscn")
+
+var initialized: bool = false
 
 ## list of all loaded keys
 var masterKeyList: Array[String]:
@@ -10,11 +13,9 @@ var masterKeyList: Array[String]:
 		masterKeyList = data
 		Globals.DV_MasterList_Updated.emit(masterKeyList);
 
-
 func _ready() -> void:
 	_create_dataList()
 	Globals.GameData_Updated.connect(_on_gameData_updated)
-	
 
 #region master key list
 
@@ -45,8 +46,17 @@ func _remove_dataList(list: Data_List):
 
 #endregion
 
+## if the game data is updated
 func _on_gameData_updated(gameData: Gun_Name_Data):
-	var newMaster = _build_masterKeyList([gameData])
+
+	# get all dynamic loaded game data
+	var loadedGunNameData: Array[Gun_Name_Data] = [gameData]
+	for list: Data_List in Lists.get_children():
+		if list.gameData != null:
+			loadedGunNameData.append(list.gameData)
+	
+	# new data needs masterlist key rebuild
+	var newMaster = _build_masterKeyList(loadedGunNameData)
 
 	var masterUpdate: bool = false
 
@@ -60,5 +70,6 @@ func _on_gameData_updated(gameData: Gun_Name_Data):
 	
 	if masterUpdate:
 		masterKeyList = newMaster
-	
-	
+
+	# update game data list
+	GameDataList._set_data(gameData, masterKeyList)

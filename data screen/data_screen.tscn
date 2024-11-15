@@ -25,6 +25,7 @@ title = "Keys"
 DATA_FIELD = ExtResource("4_8s333")
 
 [node name="GameData" parent="HBoxContainer" instance=ExtResource("2_q4srk")]
+unique_name_in_owner = true
 layout_mode = 2
 title = "Game Data"
 
@@ -32,12 +33,3 @@ title = "Game Data"
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"CloseHBox"
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Lists"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="HBoxContainer/Lists/PanelContainer"]
-layout_mode = 2
-text = "Load Data File"
